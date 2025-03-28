@@ -2,6 +2,8 @@
 
 BlenderMCP connects Blender to Claude AI through the Model Context Protocol (MCP), allowing Claude to directly interact with and control Blender. This integration enables prompt assisted 3D modeling, scene creation, and manipulation.
 
+[![Install with UV in VS Code](https://img.shields.io/badge/VS_Code-UV-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://vscode.dev/redirect?url=vscode:mcp/install?%7B%22name%22%3A%22blender%22%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22blender-mcp%22%5D%2C%22env%22%3A%7B%7D%7D) [![Install with UV in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-UV-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect?url=vscode-insiders:mcp/install?%7B%22name%22%3A%22blender%22%2C%22command%22%3A%22uvx%22%2C%22args%22%3A%5B%22blender-mcp%22%5D%2C%22env%22%3A%7B%7D%7D)
+
 [Full tutorial](https://www.youtube.com/watch?v=lCyQ717DuzQ)
 
 ### Join the Community
@@ -112,8 +114,36 @@ For Windows users, go to Settings > MCP > Add Server, add a new server with the 
 }
 ```
 
-
 [Cursor setup video](https://www.youtube.com/watch?v=wgWsJshecac)
+
+### VS Code Installation
+
+Click one of the buttons at the top of this file to add directly to VS Code or...
+
+Add the following to your `.vscode/mcp.json` file:
+
+```json
+{
+  "blender": {
+    "command": "uvx",
+    "args": [
+      "blender-mcp"
+    ]
+  }
+}
+```
+
+You can also add with the VS Code CLI
+
+**CLI Commands:**
+
+```bash
+# VS Code
+code --install-mcp-server '{"name":"blender","command":"uvx","args":["blender-mcp"],"env":{}}'
+
+# VS Code Insiders
+code-insiders --install-mcp-server '{"name":"blender","command":"uvx","args":["blender-mcp"],"env":{}}'
+```
 
 **⚠️ Only run one instance of the MCP server (either on Cursor or Claude Desktop), not both**
 
@@ -193,7 +223,6 @@ The system uses a simple JSON-based protocol over TCP sockets:
 - The `execute_blender_code` tool allows running arbitrary Python code in Blender, which can be powerful but potentially dangerous. Use with caution in production environments. ALWAYS save your work before using it.
 - Poly Haven requires downloading models, textures, and HDRI images. If you do not want to use it, please turn it off in the checkbox in Blender. 
 - Complex operations might need to be broken down into smaller steps
-
 
 ## Contributing
 
